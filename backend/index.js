@@ -29,9 +29,9 @@ main()
   .catch((err) => {
     console.log(err);
   });
-async function main() {
+wrapAsync(async function main() {
   await mongoose.connect(db_url);
-}
+});
 
 app.listen(PORT, () => {
   console.log("app is listening on port");
