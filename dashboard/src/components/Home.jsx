@@ -9,7 +9,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("https://zerodhabackend-2cdq.onrender.com//userAuthenticate", { withCredentials: true })
+      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
         if (res.data.authenticated) {
           setUserData(res.data.user);
