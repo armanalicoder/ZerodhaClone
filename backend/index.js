@@ -37,7 +37,7 @@ app.listen(PORT, () => {
   console.log("app is listening on port");
 });
 app.get("/", (req, res) => {
-  window.location.href='https://zerodhatrading.onrender.com';
+  res.redirect('https://zerodhatrading.onrender.com');
 });
 // app.get("/insertholding", async (req, res) => {
 //   const allData = holdingData.holdings
