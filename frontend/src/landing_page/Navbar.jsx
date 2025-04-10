@@ -11,7 +11,7 @@ function Navbar() {
           setisLoggedIn(true);
           toast.success("You've already logged in redirecting .");
           setTimeout(() => {
-            window.location.href = "http://localhost:5174";
+            window.location.href = "https://dashboard-zerodhatrading.onrender.com";
           }, 4000);
         }
       })
@@ -45,7 +45,7 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
               {isLoggedIn ? (
-                <Link className="nav-link mx-3" aria-current="page" to="http://localhost:5174">
+                <Link className="nav-link mx-3" aria-current="page" to="https://dashboard-zerodhatrading.onrender.com">
                   Dashboard
                 </Link>
               ) : (

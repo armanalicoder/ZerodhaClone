@@ -16,7 +16,7 @@ function Home() {
         } else {
           alert("you aren't logged in.")
           setTimeout(() => {
-            window.location.href = "http://localhost:5173";
+            window.location.href = "https://zerodhatrading.onrender.com";
           }, 1000);
         }
         setLoading(false);
@@ -24,7 +24,7 @@ function Home() {
       .catch((err) => {
         alert("Something Went Wrong !")
         setTimeout(() => {
-          window.location.href = "http://localhost:5173";
+          window.location.href = "https://zerodhatrading.onrender.com";
         }, 2000);
         setLoading(false);
       });

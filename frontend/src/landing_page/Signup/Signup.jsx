@@ -19,7 +19,7 @@ function Signup() {
           toast.success("You've already logged in redirecting .");
           setisLoggedIn(true);
           setTimeout(() => {
-            window.location.href = "http://localhost:5174";
+            window.location.href = "https://dashboard-zerodhatrading.onrender.com";
           }, 4000);
         }
       })
@@ -35,7 +35,7 @@ function Signup() {
         toast.success("Signup successfull ! Redirecting to Login page..");
         setisLoggedIn(true);
         setTimeout(() => {
-          window.location.href = "http://localhost:5173/login";
+          window.location.href = "https://zerodhatrading.onrender.com/login";
         }, 3000);
       } else {
         toast.error(res.data.message);

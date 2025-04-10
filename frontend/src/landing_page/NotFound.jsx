@@ -12,7 +12,7 @@ function NotFound() {
             The page you are looking for might have been removed or is
             temporarily unavailable.
           </p>
-          <Link to="/" className="btn btn-primary">
+          <Link to="https://zerodhatrading.onrender.com" className="btn btn-primary">
             Go to Homepage
           </Link>
         </div>

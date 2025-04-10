@@ -18,7 +18,7 @@ const db_url = process.env.MONGO_URL;
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: ["https://zerodhatrading.onrender.com", "http://localhost:5174"],
+  origin: ["https://zerodhatrading.onrender.com", "https://dashboard-zerodhatrading.onrender.com"],
   credentials: true
 }));
 
@@ -37,7 +37,7 @@ app.listen(PORT, () => {
   console.log("app is listening on port");
 });
 app.get("/", (req, res) => {
-  res.send("Home Page");
+  window.location.href='https://zerodhatrading.onrender.com';
 });
 // app.get("/insertholding", async (req, res) => {
 //   const allData = holdingData.holdings

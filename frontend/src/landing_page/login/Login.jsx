@@ -18,7 +18,7 @@ function Login() {
           setisLoggedIn(true);
           toast.success("You've already logged in redirecting .");
           setTimeout(() => {
-            window.location.href = "http://localhost:5174";
+            window.location.href = "https://dashboard-zerodhatrading.onrender.com";
           }, 4000);
         }
       })
@@ -39,7 +39,7 @@ function Login() {
         toast.success("Login Success! Redirecting..");
         setisLoggedIn(true);
         setTimeout(() => {
-          window.location.href = "http://localhost:5174";
+          window.location.href = "https://dashboard-zerodhatrading.onrender.com";
         }, 4000);
       } else {
         toast.error("Invalid username or password.");
