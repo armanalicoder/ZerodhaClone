@@ -12,7 +12,7 @@ function Signup() {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:8000/userAuthenticate", { withCredentials: true })
+      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
         if (res.data.authenticated) {
           // Already logged in, redirect to dashboard
@@ -30,7 +30,7 @@ function Signup() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/signup", formData);
+      const res = await axios.post("https://zerodhabackend-2cdq.onrender.com/signup", formData);
       if (res.data.user != undefined) {
         toast.success("Signup successfull ! Redirecting to Login page..");
         setisLoggedIn(true);

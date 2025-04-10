@@ -12,7 +12,7 @@ function Login() {
   });
   useEffect(() => {
     axios
-      .get("http://localhost:8000/userAuthenticate", { withCredentials: true })
+      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
         if (res.data.authenticated) {
           setisLoggedIn(true);
@@ -32,7 +32,7 @@ function Login() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8000/login", formData, {
+      const res = await axios.post("https://zerodhabackend-2cdq.onrender.com/login", formData, {
         withCredentials: true,
       });
       if (res.data.message === "Login success") {

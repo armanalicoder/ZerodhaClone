@@ -5,7 +5,7 @@ function Navbar() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/userAuthenticate", { withCredentials: true })
+      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
         if (res.data.authenticated) {
           setisLoggedIn(true);

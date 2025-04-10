@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Menu = ({ userData }) => {
   const handlelogout =async()=>{
    
-      await axios.get('http://localhost:8000/logout',{withCredentials:true}).then((res)=>{
+      await axios.get('https://zerodhabackend-2cdq.onrender.com/logout',{withCredentials:true}).then((res)=>{
         if(res.data.success){
           alert("Logout Successfully!")
           window.location.href="http://localhost:5173";
