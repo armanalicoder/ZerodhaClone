@@ -3,27 +3,33 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import HomePage from "../Home/HomePage";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 function Login() {
   const navigate = useNavigate();
   const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
   useEffect(() => {
     axios
-      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
+      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res?.data?.authenticated) {
           setisLoggedIn(true);
           toast.success("You've already logged in redirecting .");
           setTimeout(() => {
-            window.location.href = "https://dashboard-zerodhatrading.onrender.com";
+            window.location.href =
+              "https://dashboard-zerodhatrading.onrender.com";
           }, 4000);
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
   }, []);
 
@@ -31,15 +37,22 @@ function Login() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
-      const res = await axios.post("https://zerodhabackend-2cdq.onrender.com/login", formData, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        "https://zerodhabackend-2cdq.onrender.com/login",
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
+      setLoader(false);
       if (res?.data?.message === "Login success") {
         toast.success("Login Success! Redirecting..");
         setisLoggedIn(true);
         setTimeout(() => {
-          window.location.href = "https://dashboard-zerodhatrading.onrender.com";
+          window.location.href =
+            "https://dashboard-zerodhatrading.onrender.com";
         }, 3000);
       } else {
         toast.error("Invalid username or password.");
@@ -47,6 +60,7 @@ function Login() {
       }
     } catch (err) {
       if (err.response && err.response.status === 401) {
+        setLoader(false);
         toast.error(err.response.data.message);
       } else {
         toast.error("Something went wrong. Please try again.");
@@ -57,9 +71,22 @@ function Login() {
 
   return (
     <>
-      {isLoggedIn ? <HomePage/> : (
+      {isLoggedIn ? (
+        <HomePage />
+      ) : (
         <div className="row">
           <div className="col-sm-12">
+            {loader ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            ) : null}
             <div className="col-sm-4 p-3 mx-auto shadow">
               <div className="text-center my-5">
                 <div className="mb-4">

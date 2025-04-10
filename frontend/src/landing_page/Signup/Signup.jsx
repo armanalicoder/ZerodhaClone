@@ -3,8 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import HomePage from "../Home/HomePage";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 function Signup() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -12,25 +15,33 @@ function Signup() {
   });
   useEffect(() => {
     axios
-      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
+      .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res?.data?.authenticated) {
           // Already logged in, redirect to dashboard
           toast.success("You've already logged in redirecting .");
           setisLoggedIn(true);
           setTimeout(() => {
-            window.location.href = "https://dashboard-zerodhatrading.onrender.com";
+            window.location.href =
+              "https://dashboard-zerodhatrading.onrender.com";
           }, 4000);
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
   }, []);
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
-      const res = await axios.post("https://zerodhabackend-2cdq.onrender.com/signup", formData);
+      const res = await axios.post(
+        "https://zerodhabackend-2cdq.onrender.com/signup",
+        formData
+      );
+      setLoader(false);
       if (res?.data?.user != undefined) {
         toast.success("Signup successfull ! Redirecting to Login page..");
         setisLoggedIn(true);
@@ -46,7 +57,9 @@ function Signup() {
   };
   return (
     <>
-      {isLoggedIn ? <HomePage/> : (
+      {isLoggedIn ? (
+        <HomePage />
+      ) : (
         <section>
           <div className="row my-4">
             <div className="col-sm-12 text-center p-5">
@@ -68,6 +81,17 @@ function Signup() {
               />
             </div>
             <div className="col-sm-6">
+              {loader ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <CircularProgress />
+                </Box>
+              ) : null}
               <div>
                 <h2>Signup now</h2>
                 <p className="fs-5">On track your existing application</p>
