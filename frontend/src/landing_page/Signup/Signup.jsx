@@ -30,8 +30,8 @@ function Signup() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://zerodhabackend-2cdq.onrender.com/signup", formData);
-      if (res?.data?.user != undefined) {
+      const res = await axios.post("https://zerodhatrading.onrender.com/signup", formData);
+      if (res.data.user != undefined) {
         toast.success("Signup successfull ! Redirecting to Login page..");
         setisLoggedIn(true);
         setTimeout(() => {

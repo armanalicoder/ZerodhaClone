@@ -45,7 +45,7 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
               {isLoggedIn ? (
-                <Link className="nav-link mx-3" aria-current="page" to="https://dashboard-zerodhatrading.onrender.com">
+                <Link className="nav-link mx-3" aria-current="page" to="http://localhost:5174">
                   Dashboard
                 </Link>
               ) : (
