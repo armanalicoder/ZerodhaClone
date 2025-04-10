@@ -13,6 +13,7 @@ module.exports.Signup = async (req, res, next) => {
     }
     const user = await User.create({ email, password, username, createdAt });
     const token = createSecretToken(user._id);
+    res.setHeader("Access-Control-Allow-Credentials", "true");
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "None",
@@ -40,11 +41,11 @@ module.exports.Login = async (req, res) => {
     process.env.SECRET_KEY,
     { expiresIn: "1h" }
   );
-
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.cookie("token", token, {
     httpOnly: true,
+    sameSite: "None",
     secure: true,
-    sameSite: "lax",
   });
 
   res.json({ message: "Login success" });

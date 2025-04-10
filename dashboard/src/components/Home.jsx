@@ -11,7 +11,7 @@ function Home() {
     axios
       .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
-        if (res.data.authenticated) {
+        if (res?.data?.authenticated) {
           setUserData(res.data.user);
         } else {
           alert("you aren't logged in.")
