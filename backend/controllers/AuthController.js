@@ -64,11 +64,11 @@ module.exports.checkAuth = (req, res) => {
 };
 
 module.exports.Logout = (req, res) => {
-    res.clearCookie("token", {
-      path: "/",
-      httpOnly: true,
-      sameSite: "Lax", 
-      secure: true,
-    });
-    return res.json({ success: true });
+  res.clearCookie("token", {
+    path: "/",
+    httpOnly: true,
+    sameSite: "None",
+    secure: true,
+  });
+  return res.json({ success: true });
 };
