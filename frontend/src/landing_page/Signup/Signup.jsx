@@ -14,7 +14,6 @@ function Signup() {
     axios
       .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
-        console.log(res)
         if (res.data.authenticated) {
           // Already logged in, redirect to dashboard
           toast.success("You've already logged in redirecting .");
