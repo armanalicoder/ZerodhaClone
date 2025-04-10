@@ -14,7 +14,7 @@ function Login() {
     axios
       .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
-        if (res.data.authenticated) {
+        if (res?.data?.authenticated) {
           setisLoggedIn(true);
           toast.success("You've already logged in redirecting .");
           setTimeout(() => {
@@ -35,12 +35,12 @@ function Login() {
       const res = await axios.post("https://zerodhabackend-2cdq.onrender.com/login", formData, {
         withCredentials: true,
       });
-      if (res.data.message === "Login success") {
+      if (res?.data?.message === "Login success") {
         toast.success("Login Success! Redirecting..");
         setisLoggedIn(true);
         setTimeout(() => {
           window.location.href = "https://dashboard-zerodhatrading.onrender.com";
-        }, 4000);
+        }, 3000);
       } else {
         toast.error("Invalid username or password.");
         setFormData({ username: "", password: "" });
