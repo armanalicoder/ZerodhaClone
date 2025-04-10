@@ -14,7 +14,7 @@ function Signup() {
     axios
       .get("https://zerodhabackend-2cdq.onrender.com/userAuthenticate", { withCredentials: true })
       .then((res) => {
-        if (res.data.authenticated) {
+        if (res?.data?.authenticated) {
           // Already logged in, redirect to dashboard
           toast.success("You've already logged in redirecting .");
           setisLoggedIn(true);
@@ -31,7 +31,7 @@ function Signup() {
     e.preventDefault();
     try {
       const res = await axios.post("https://zerodhatrading.onrender.com/signup", formData);
-      if (res.data.user != undefined) {
+      if (res?.data?.user != undefined) {
         toast.success("Signup successfull ! Redirecting to Login page..");
         setisLoggedIn(true);
         setTimeout(() => {
